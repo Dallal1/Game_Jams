@@ -52,6 +52,12 @@ public class CountdownTimer : MonoBehaviour
     private void OnTimeUp()
     {
         Debug.Log("Time's up! Rocket launched!");
-        // بعدين هنضيف هنا Game Over screen
+
+        // نجيب GameManager ونستدعي PlayerLoses
+        GameManager gameManager = FindAnyObjectByType<GameManager>();
+        if (gameManager != null)
+        {
+            gameManager.PlayerLoses();
+        }
     }
 }
