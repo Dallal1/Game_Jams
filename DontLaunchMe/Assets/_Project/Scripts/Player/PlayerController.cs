@@ -152,4 +152,25 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Death"))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(
+                UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+            );
+        }
+
+        if (other.CompareTag("Goal"))
+        {
+            // نبحث عن GameManager ونستدعي PlayerWins
+            GameManager gm = FindFirstObjectByType<GameManager>();
+            if (gm != null)
+            {
+                gm.PlayerWins();
+            }
+        }
+    }
+
 }
